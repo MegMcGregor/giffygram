@@ -1,14 +1,29 @@
 {
     "users": [
       {
-        "name": "Micaela",
-        "email": "micaela@home.com",
+        "name": "Brenda",
+        "email": "brenda@brenda.com",
         "id": 1
       },
       {
         "name": "Bryan",
         "email": "bryan@bn.com",
         "id": 2
+      },
+      {
+        "name": "Melissa",
+        "email": "melissa@home.com",
+        "id": 3
+      },
+      {
+        "name": "Red",
+        "email": "red@home.com",
+        "id": 4
+      },
+      {
+        "name": "Red",
+        "email": "red@home.com",
+        "id": 5
       }
     ],
     "posts": [
@@ -23,10 +38,19 @@
       {
         "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
         "userId": 1,
-        "description": "This is my second post.",
+        "description": "This is my second post in DB",
         "timestamp": 1561695022812,
-        "title": "This is so FUN",
+        "title": "Yeah this is so awesome",
         "id": 3
+      },
+      {
+        "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
+        "userId": 1,
+        "description": "This is my three post in DB",
+        "timestamp": 1561695022812,
+        "title": "Even Better than the first one",
+        "id": 4
       }
     ],
     "messages": []
+  }
