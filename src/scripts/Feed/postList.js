@@ -8,3 +8,6 @@ export const PostList = (allPosts) => {
 		return postHTML;
 	
 }
+
+//PostList is a function that takes allPosts as parameter.
+//allPosts becomes function that declares an empty HTML string then loops through all postsObjects and returns HTML.
