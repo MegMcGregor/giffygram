@@ -26,32 +26,6 @@
       "id": 5
     }
   ],
-
-  "posts": [
-    {
-      "id": 2,
-      "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
-      "userId": 6,
-      "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-      "timestamp": 1561695022812,
-      "title": "Enhanced global utilisation"
-    },
-    {
-      "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
-      "userId": 1,
-      "description": "This is my second post in DB",
-      "timestamp": 1561695022812,
-      "title": "Yeah this is so awesome",
-      "id": 3
-    },
-    {
-      "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
-      "userId": 1,
-      "description": "This is my three post in DB",
-      "timestamp": 1615396613715,
-      "title": "Even Better than the first one",
-      "id": 4
-    }
-  ],
+  "posts": [],
   "messages": []
 }

@@ -1,4 +1,4 @@
-import { getUsers, getPosts, usePostCollection, getLoggedInUser, createPost } from "./data/DataManager.js";
+import { getUsers, getPosts, usePostCollection, getLoggedInUser, createPost, deletePost } from "./data/DataManager.js";
 import { PostList } from "./feed/PostList.js";
 import { NavBar } from "./nav/NavBar.js";
 import { Footer } from "./nav/Footer.js";
@@ -25,6 +25,17 @@ applicationElement.addEventListener("change", event => {
 	  const yearAsNumber = parseInt(event.target.value)
 	  console.log(`User wants to see posts since ${yearAsNumber}`)
 	  showFilteredPosts(yearAsNumber);
+	}
+  })
+
+  applicationElement.addEventListener("click", event => {
+	event.preventDefault();
+	if (event.target.id.startsWith("delete")) {
+	  const postId = event.target.id.split("__")[1];
+	  deletePost(postId)
+		.then(response => {
+		  showPostList();
+		})
 	}
   })
 
