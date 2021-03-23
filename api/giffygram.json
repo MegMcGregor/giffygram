@@ -26,6 +26,31 @@
       "id": 5
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "title": "test test test",
+      "imageURL": "https://media.giphy.com/media/WuZFeCtAKwjkY/giphy.gif",
+      "description": "This is tinkerbell",
+      "userId": 1,
+      "timestamp": 1616527027430,
+      "id": 1
+    },
+    {
+      "title": "and another one",
+      "imageURL": "https://media.giphy.com/media/WuZFeCtAKwjkY/giphy.gif",
+      "description": "This is tinkerbell again",
+      "userId": 1,
+      "timestamp": 1616527065828,
+      "id": 2
+    },
+    {
+      "title": "TADA",
+      "imageURL": "https://media.giphy.com/media/Q0Rt4HVGW0Y80/giphy.gif",
+      "description": "a different tinkerbell",
+      "userId": 1,
+      "timestamp": 1616527546969,
+      "id": 3
+    }
+  ],
   "messages": []
 }
