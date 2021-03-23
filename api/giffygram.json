@@ -1,13 +1,29 @@
 {
   "users": [
     {
+      "name": "Brenda",
+      "email": "brenda@brenda.com",
       "id": 1
     },
     {
+      "name": "Bryan",
+      "email": "bryan@bn.com",
       "id": 2
     },
     {
+      "name": "Melissa",
+      "email": "melissa@home.com",
       "id": 3
+    },
+    {
+      "name": "Red",
+      "email": "red@home.com",
+      "id": 4
+    },
+    {
+      "name": "Red",
+      "email": "red@home.com",
+      "id": 5
     }
   ],
 
@@ -35,14 +51,6 @@
       "timestamp": 1615396613715,
       "title": "Even Better than the first one",
       "id": 4
-    },
-    {
-      "title": "test test testttt",
-      "imageURL": "https://giphy.com/clips/dreamworkstrolls-hooray-dreamworks-trollsworldtour-trolls-flowers-happy-sing-J6IvHcOkpPDv1ay6G2",
-      "description": "testing",
-      "userId": 1,
-      "timestamp": 1616517878909,
-      "id": 5
     }
   ],
   "messages": []
