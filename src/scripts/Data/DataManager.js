@@ -1,16 +1,14 @@
-export const getUsers = () => {
-  return fetch("http://localhost:8088/users")
-    .then(response => response.json())
-}
-
+///////////////////////////////POSTS DATA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 let postCollection = [];
 
 export const usePostCollection = () => {
   return [...postCollection];
 }
 
+// ALLPOST FETCH CALL
 export const getPosts = () => {
-  return fetch("http://localhost:8088/posts")
+  const userID = getLoggedInUser().id
+  return fetch(`http://localhost:8088/posts?_expand=user`)
     .then(response => response.json())
     .then(parsedResponse => {
       postCollection = parsedResponse
@@ -18,7 +16,14 @@ export const getPosts = () => {
     })
 }
 
-export const createPost = postObj => {
+//ONE POST FETCH CALL (TARGET BY ID)
+export const getSinglePost = (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`)
+    .then(response => response.json())
+}
+
+//FETCH CALL FOR RENDERING POSTS
+export const createPost = (postObj) => {
   return fetch("http://localhost:8088/posts", {
     method: "POST",
     headers: {
@@ -30,42 +35,90 @@ export const createPost = postObj => {
     .then(response => response.json())
 }
 
-const loggedInUser = {
+//FETCH CALL FOR DELETING POST (TARGET BY ID)
+export const deletePost = (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+
+  })
+    .then(response => response.json())
+    .then(getPosts)
+}
+
+//FETCH CALL FOR EDITING POST
+export const updatePost = postObj => {
+  return fetch(`http://localhost:8088/posts/${postObj.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postObj)
+
+  })
+    .then(response => response.json())
+    .then(getPosts)
+}
+
+//FETCH CALL FOR REGISTERING USER
+export const registerUser = (userObj) => {
+  return fetch(`http://localhost:8088/users`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userObj)
+  })
+    .then(response => response.json())
+    .then(parsedUser => {
+      setLoggedInUser(parsedUser);
+      return getLoggedInUser();
+    })
+}
+
+
+////////////////////////////////////USERS DATA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+let loggedInUser = {
   id: 1,
   name: "Bryan",
   email: "bryan@bn.com"
 }
 
+//FETCH CALL FOR ALL USERS
+export const getUsers = () => {
+  return fetch("http://localhost:8088/users")
+    .then(response => response.json())
+}
+
+//CHECKS FOR IF A USER EXISTS
+export const loginUser = (userObj) => {
+  return fetch(`http://localhost:8088/users?name=${userObj.name}&email=${userObj.email}`)
+    .then(response => response.json())
+    .then(parsedUser => {
+      (console.log("parsedUser", parsedUser))
+      if (parsedUser.length > 0) {
+        setLoggedInUser(parsedUser[0]);
+        return getLoggedInUser();
+      }
+      else {
+        return false
+      }
+    })
+}
+
+//RETURNS A SINGLE USER
 export const getLoggedInUser = () => {
   return { ...loggedInUser };
 }
 
-export const deletePost = postId => {
-  return fetch(`http://localhost:8088/posts/${postId}`, {
-      method: "DELETE",
-      headers: {
-          "Content-Type": "application/json"
-      }
-
-  })
-      .then(response => response.json())
-      .then(getPosts)
+//SETS THE LOGGED IN USER
+export const setLoggedInUser = (userObj) => {
+  loggedInUser = userObj;
 }
 
-export const getSinglePost = (postId) => {
-  return fetch(`http://localhost:8088/posts/${postId}`)
-    .then(response => response.json())
-}
-
-export const updatePost = postObj => {
-  return fetch(`http://localhost:8088/posts/${postObj.id}`, {
-      method: "PUT",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(postObj)
-
-  })
-      .then(response => response.json())
-      .then(getPosts)
+//LOGS USER OUT BY SETTING USER TO EMPTY OBJECT
+export const logOutUser = () => {
+  loggedInUser = {};
 }
