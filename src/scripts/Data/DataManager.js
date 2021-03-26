@@ -5,16 +5,16 @@ export const usePostCollection = () => {
   return [...postCollection];
 }
 
-// ALLPOST FETCH CALL
-export const getPosts = () => {
-  const userID = getLoggedInUser().id
-  return fetch(`http://localhost:8088/posts?_expand=user`)
-    .then(response => response.json())
-    .then(parsedResponse => {
-      postCollection = parsedResponse
-      return parsedResponse;
-    })
-}
+// // ALLPOST FETCH CALL
+// export const getPosts = () => {
+//   const userID = getLoggedInUser().id
+//   return fetch(`http://localhost:8088/posts?_expand=user`)
+//     .then(response => response.json())
+//     .then(parsedResponse => {
+//       postCollection = parsedResponse
+//       return parsedResponse;
+//     })
+// }
 
 //ONE POST FETCH CALL (TARGET BY ID)
 export const getSinglePost = (postId) => {
@@ -62,29 +62,20 @@ export const updatePost = postObj => {
     .then(getPosts)
 }
 
-//FETCH CALL FOR REGISTERING USER
-export const registerUser = (userObj) => {
-  return fetch(`http://localhost:8088/users`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(userObj)
-  })
+//GET POSTS WITH USER INFORMATION 
+export const getPosts = () => {
+  const userId = getLoggedInUser().id
+  return fetch(`http://localhost:8088/posts?_expand=user`)
     .then(response => response.json())
-    .then(parsedUser => {
-      setLoggedInUser(parsedUser);
-      return getLoggedInUser();
+    .then(parsedResponse => {
+      console.log("data with user", parsedResponse)
+      postCollection = parsedResponse
+      return parsedResponse;
     })
 }
 
-
 ////////////////////////////////////USERS DATA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-let loggedInUser = {
-  id: 1,
-  name: "Bryan",
-  email: "bryan@bn.com"
-}
+let loggedInUser = {}
 
 //FETCH CALL FOR ALL USERS
 export const getUsers = () => {
@@ -106,6 +97,23 @@ export const loginUser = (userObj) => {
         return false
       }
     })
+}
+
+
+//REGISTER NEW USER
+export const registerUser = (userObj) => {
+  return fetch(`http://localhost:8088/users`, {
+    method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userObj)
+  })
+  .then(response => response.json())
+  .then(parsedUser => {
+    setLoggedInUser(parsedUser);
+    return getLoggedInUser();
+  })
 }
 
 //RETURNS A SINGLE USER

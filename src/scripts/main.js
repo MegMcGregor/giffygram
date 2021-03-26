@@ -1,4 +1,4 @@
-import { getUsers, getPosts, usePostCollection, getLoggedInUser, createPost, deletePost, getSinglePost, logOutUser } from "./data/DataManager.js";
+import { getUsers, getPosts, usePostCollection, getLoggedInUser, createPost, deletePost, getSinglePost, logOutUser, loginUser, setLoggedInUser, registerUser } from "./data/DataManager.js";
 import { PostList } from "./feed/PostList.js";
 import { NavBar } from "./nav/NavBar.js";
 import { Footer } from "./nav/Footer.js";
@@ -17,6 +17,7 @@ const footerElement = document.querySelector("footer");
 applicationElement.addEventListener("click", (event) => {
 	if (event.target.id === "logout") {
 		logOutUser();
+		console.log(getLoggedInUser())
 		sessionStorage.clear();
 		checkForUser()
 	}
@@ -24,6 +25,7 @@ applicationElement.addEventListener("click", (event) => {
 
 //LOGIN BUTTON
 applicationElement.addEventListener("click", event => {
+	console.log("this button works");
 	event.preventDefault();
 	if (event.target.id === "login__Submit") {
 		const userObject = {
@@ -201,6 +203,7 @@ const checkForUser = () => {
 		setLoggedInUser(JSON.parse(sessionsStorage.getItem("user")));
 		startGiffyGram();
 	} else {
+		console.log("showLogin")
 		showLogInRegister();
 	}
 }
@@ -223,3 +226,5 @@ const startGiffyGram = () => {
 }
 
 startGiffyGram();
+
+// checkForUser();
